@@ -1,0 +1,37 @@
+﻿<div style="padding: 100px; text-align: center;">
+    <button id="click-me" class="btn btn-primary btn-lg">click me</button>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+    <script src="signalr/hubs"></script>
+
+    <script>
+        $(() => {
+            var chat = $.connection.engagementHub;
+
+            chat.client.recieveEngagementMessage = function (message) {
+                console.log(message)
+            }
+
+            chat.client.receiveEngagementLanguageMessage = function (message) {
+                console.log(message)
+            }
+
+            $.connection.hub.start()
+                .done(() => {
+                    console.log('connected.')
+                })
+                .fail(() => {
+                    console.log('failed to connect.')
+                })
+
+            $('#click-me').on('click', () => {
+                $.ajax({
+                    url: '/api/AgentChat',
+                    method: 'post'
+                })
+            })
+        })
+    </script>
+}
