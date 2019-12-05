@@ -271,6 +271,7 @@
     <Compile Include="Services\ConnectionService.cs" />
     <Compile Include="Models\UserConnection.cs" />
     <Compile Include="Services\RealtimeService.cs" />
+    <Compile Include="SignalRBench.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
